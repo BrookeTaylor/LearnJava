@@ -41,13 +41,29 @@ public class Main {
 
 
 
-
+        // find by oldest
         System.out.println("\nFinding the oldest dog...");
         Dog oldest = findOldestDog(shelterDogs);
 
         if (oldest != null) {
             System.out.println("Oldest dog: " + oldest);
         }
+
+
+
+
+        // remove dog
+        System.out.println("\nRemoving Mochi from the shelter...");
+        boolean removed = removeDogByName(shelterDogs, "Mochi");
+
+        if (removed) {
+            System.out.println("Mochi was adopted! Updated list:");
+        } else {
+            System.out.println("Mochi was not found in the shelter.");
+        }
+
+        printAllDogs(shelterDogs);
+
 
 
     }
@@ -87,6 +103,22 @@ public class Main {
 
         return oldest;
     }
+
+
+
+
+    static boolean removeDogByName(ArrayList<Dog> dogs, String name) {
+        // loop through all dogs
+        for (int i = 0; i < dogs.size(); i++) {
+            Dog d = dogs.get(i);
+            if (d.name.equalsIgnoreCase(name)) {
+                dogs.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 
